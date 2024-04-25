@@ -27,8 +27,11 @@ const AllocationForm = (props) => {
             }
     };
     function changeCurrency(){
-        newcurrency = document.getElementById("currencyChanger");
-
+        var newcurrency = document.getElementById("currencyChanger").value;
+        dispatch({
+            type:'CHG_CURRENCY',
+            payload:newcurrency,
+        })
     }
 
     return (
@@ -66,8 +69,10 @@ const AllocationForm = (props) => {
                         onChange={(event) => setCost(event.target.value)}>
                         </input>
                         <select id="currencyChanger" onChange={changeCurrency} >
-                        <option value = "USD">USD</option>
-                        <option value="EURO">EURO</option>
+                            <option value = "$">$</option>
+                            <option value="€">€</option>
+                            <option value="₹">₹</option>
+                            <option value="£">£</option>
                         </select>
 
                     <button className="btn btn-primary" onClick={submitEvent} style={{ marginLeft: '2rem' }}>
